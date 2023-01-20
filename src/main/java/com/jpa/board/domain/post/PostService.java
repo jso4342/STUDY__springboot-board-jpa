@@ -41,7 +41,7 @@ public class PostService {
     @Transactional(readOnly = true)
     public GetPostDetailsResponse getPostDetail(long postId) {
         Post savedPost = postRepository.findById(postId)
-                .orElseThrow(() -> new ResourceNotFoundException(MessageFormat.format("Cannot find the relevant Post. Please check post id. [Post ID]: {0}", String.valueOf(postId))));
+                .orElseThrow(() -> new ResourceNotFoundException(MessageFormat.format("해당 게시글을 찾을 수 없습니다.", String.valueOf(postId))));
 
         return GetPostDetailsResponse.from(savedPost);
     }
@@ -49,9 +49,16 @@ public class PostService {
     // 게시글 작성
     public long createPost(CreatePostRequest createPostRequest) {
         User user = userRepository.findById(createPostRequest.id())
-                .orElseThrow(() -> new ResourceNotFoundException(MessageFormat.format("Can not find User. Please check user id. [User ID]: {0}", createPostRequest.id())));
-
+                .orElseThrow(() -> new ResourceNotFoundException(MessageFormat.format("해당 유저를 찾을 수 없습니다.", createPostRequest.id())));
         Post post = postRepository.save(createPostRequest.toEntity(user));
+
         return post.getId();
+    }
+
+    // 게시글 수정
+    public void modifyPost(long id, ModifyPostRequest modifyPostRequest){
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(MessageFormat.format("해당 게시글을 찾을 수 없습니다.", id)));
+        post.update(modifyPostRequest.title(), modifyPostRequest.content());
     }
 }

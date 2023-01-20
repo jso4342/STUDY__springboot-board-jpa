@@ -7,27 +7,6 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
 
-//public record PostDto (
-//        long id,
-//        @NotBlank String title,
-//        @NotBlank String content
-//){
-//    public static PostDto from (Post post) {
-//        return new PostDto(post.getId(), post.getTitle(), post.getContent());
-//    }
-//
-//    public CreatePostRequest(@JsonProperty("title") String title, @JsonProperty("content") String content, @JsonProperty("userId") long id) {
-//        this.title = title;
-//        this.content = content;
-//        this.id = id;
-//    }
-//
-//    public Post toEntity(User user) {
-//        return new Post(this.title, this.content, user);
-//    }
-//
-//}
-
 public class PostDto {
 
     public record GetPostsResponse(List<GetPostDetailsResponse>postDetails) { }
@@ -48,6 +27,14 @@ public class PostDto {
 
         public Post toEntity(User user) {
             return new Post(this.title, this.content, user);
+        }
+    }
+
+    public record ModifyPostRequest(@NotBlank String title, @NotBlank String content) {
+
+        public ModifyPostRequest(@JsonProperty("title") String title, @JsonProperty("content") String content) {
+            this.title = title;
+            this.content = content;
         }
     }
 }
