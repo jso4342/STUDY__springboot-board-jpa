@@ -1,10 +1,9 @@
 package com.jpa.board.domain.post.service;
 
 import com.jpa.board.domain.entities.Post;
-import com.jpa.board.domain.post.dto.PostDto;
-import com.jpa.board.domain.post.dto.PostsDto;
+import com.jpa.board.dtos.PostDto;
+import com.jpa.board.dtos.PostsDto;
 import com.jpa.board.domain.post.repository.PostRepository;
-import com.jpa.board.domain.user.service.UserService;
 import com.jpa.board.exceptions.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

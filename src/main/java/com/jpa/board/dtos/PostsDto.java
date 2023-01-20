@@ -1,4 +1,4 @@
-package com.jpa.board.domain.post.dto;
+package com.jpa.board.dtos;
 
 import java.util.List;
 
