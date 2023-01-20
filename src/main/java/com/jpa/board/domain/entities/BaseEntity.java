@@ -1,4 +1,4 @@
-package com.jpa.board.domain.user.entity;
+package com.jpa.board.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -11,12 +11,21 @@ import java.time.LocalDateTime;
 
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-public class BaseEntity {
-    @Column(name = "created_at")
+public abstract class BaseEntity {
+
+    @Column(name = "created_at", updatable = false)
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @Column(name = "created_by")
+    @Column(name = "created_by", updatable = false)
     @CreatedBy
     private String createdBy;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
 }

@@ -1,4 +1,4 @@
-package com.jpa.board.domain.user.entity;
+package com.jpa.board.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,4 +29,29 @@ public class User {
 
     @Column(length = 3)
     private int age;
+
+    public User(){ }
+
+    public User(Long id, String name, String hobby, int age) {
+        this.id = id;
+        this.name = name;
+        this.hobby = hobby;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public int getAge() {
+        return age;
+    }
 }

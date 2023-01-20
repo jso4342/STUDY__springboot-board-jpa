@@ -1,6 +1,5 @@
-package com.jpa.board.domain.post;
+package com.jpa.board.domain.entities;
 
-import com.jpa.board.domain.user.entity.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,15 +23,17 @@ public class Post {
     @Column(name = "post_id", updatable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "LONGTEXT")
     private String content;
 
     @ManyToOne
     @JoinColumn(name = "user_id", updatable = false, nullable = false)
     private User user;
+
+    protected Post()  { }
 
     public Long getId() {
         return id;
