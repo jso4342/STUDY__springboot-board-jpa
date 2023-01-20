@@ -39,6 +39,10 @@ public class User {
         this.age = age;
     }
 
+    public User(String name, String hobby, int age) {
+        this(null, name, hobby, age);
+    }
+
     public Long getId() {
         return id;
     }

@@ -35,6 +35,21 @@ public class Post {
 
     protected Post()  { }
 
+    public Post(Long id, String title, String content, User user) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.user = user;
+    }
+
+    public Post(String title, String content, User user) {
+        this(null, title, content, user);
+    }
+
+    public Post(String title, String content) {
+        this(title, content, null);
+    }
+
     public Long getId() {
         return id;
     }
