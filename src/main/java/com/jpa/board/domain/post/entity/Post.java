@@ -11,8 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-import java.util.Objects;
-
 @Table(name = "posts")
 @Entity
 @SequenceGenerator(
@@ -35,12 +33,4 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id", updatable = false, nullable = false)
     private User user;
-
-    public void changeUser(User user) {
-        if (Objects.nonNull(this.user)) {
-            user.getPosts().remove(this);
-        }
-        this.user = user;
-        user.getPosts().add(this);
-    }
 }

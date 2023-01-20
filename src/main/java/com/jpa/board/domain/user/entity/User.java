@@ -34,14 +34,5 @@ public class User {
     @Column(nullable = true, length = 3)
     private int age;
 
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts = new ArrayList<>();
 
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void addPost(Post post){
-        post.changeUser(this);
-    }
 }
