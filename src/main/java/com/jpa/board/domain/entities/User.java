@@ -24,8 +24,9 @@ public class User {
     @Column(nullable = false, length = 20)
     private String name;
 
+    @Column(length = 20)
     private String hobby;
 
-    @Column(nullable = true, length = 3)
+    @Column(length = 3)
     private int age;
 }

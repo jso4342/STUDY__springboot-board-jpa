@@ -1,4 +1,4 @@
-package com.jpa.board.domain.post.entity;
+package com.jpa.board.domain.post;
 
 import com.jpa.board.domain.user.entity.User;
 import jakarta.persistence.Column;
@@ -33,4 +33,21 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id", updatable = false, nullable = false)
     private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
 }
