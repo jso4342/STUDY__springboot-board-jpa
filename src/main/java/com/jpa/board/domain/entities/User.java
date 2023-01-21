@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "users")
@@ -26,7 +25,6 @@ public class User extends BaseEntity {
     private String name;
 
     @Column(length = 20)
-    @ColumnDefault("/")
     private String hobby;
 
     @Column(nullable = false, length = 3)
