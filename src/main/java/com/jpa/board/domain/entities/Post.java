@@ -10,14 +10,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Table(name = "posts")
 @Entity
+@Table(name = "posts")
 @SequenceGenerator(
         name = "post_seq_generator",
         sequenceName = "post_seq",
         initialValue = 1, allocationSize = 50)
-public class Post {
-
+public class Post extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "post_seq_generator")
     @Column(name = "post_id", updatable = false)
@@ -30,7 +29,7 @@ public class Post {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", updatable = false, nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     protected Post()  { }
@@ -66,7 +65,7 @@ public class Post {
         return user;
     }
 
-    public void update(String title, String content){
+    public void updatePost(String title, String content){
         this.title = title;
         this.content = content;
     }
