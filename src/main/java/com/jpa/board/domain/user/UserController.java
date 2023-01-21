@@ -1,6 +1,5 @@
 package com.jpa.board.domain.user;
 
-import com.jpa.board.dtos.UserDto;
 import com.jpa.board.dtos.UserDto.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
