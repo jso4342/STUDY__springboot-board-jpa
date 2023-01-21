@@ -1,6 +1,5 @@
-package com.jpa.board.controllers;
+package com.jpa.board.domain.post;
 
-import com.jpa.board.domain.post.PostService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,7 @@ import java.util.List;
 public class PostController {
     private final PostService postService;
 
-    public PostController(PostService postService) {
+    public PostController(PostService postService){
         this.postService = postService;
     }
 
@@ -37,8 +36,9 @@ public class PostController {
     @PostMapping
     public ResponseEntity<PostResponse> createPost(@RequestBody PostRequest request) {
         PostResponse response = postService.createPost(request);
-        URI location = URI.create("/api/v1/posts/" + response.getPostId());
-        return ResponseEntity.created(location).build();
+        URI location = URI.create("/posts/" + response.getPostId());
+        return ResponseEntity.created(location)
+                .build();
     }
 
     @PatchMapping("/{id}")
