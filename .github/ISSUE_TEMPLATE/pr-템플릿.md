@@ -1,6 +1,6 @@
 ---
 name: PR 템플릿
-about: pr 템플릿
+about: Describe this issue template's purpose here.
 title: ''
 labels: ''
 assignees: ''
