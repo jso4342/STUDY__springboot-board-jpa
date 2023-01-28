@@ -29,12 +29,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getPostById(@PathVariable(value = "id") Long userId) {
+    public ResponseEntity<UserResponse> getUserById(@PathVariable(value = "id") Long userId) {
         return ResponseEntity.ok(userService.getUserById(userId));
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createPost(@Valid @RequestBody UserRequest request) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest request) {
         UserResponse response = userService.createUser(request);
         URI location = URI.create("/users/" + response.getUserId());
         return ResponseEntity.created(location)
