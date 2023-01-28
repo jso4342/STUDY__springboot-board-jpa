@@ -1,5 +1,6 @@
 package com.jpa.board.domain.post;
 
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<PostResponse> createPost(@RequestBody PostRequest request) {
+    public ResponseEntity<PostResponse> createPost(@Valid @RequestBody PostRequest request) {
         PostResponse response = postService.createPost(request);
         URI location = URI.create("/posts/" + response.getPostId());
         return ResponseEntity.created(location)
@@ -42,7 +43,7 @@ public class PostController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<PostResponse> modifyPost(@PathVariable(value = "id") Long postId, @RequestBody ModifyRequest request) {
+    public ResponseEntity<PostResponse> modifyPost(@PathVariable(value = "id") Long postId, @Valid @RequestBody ModifyRequest request) {
         PostResponse response = postService.modifyPost(postId, request);
         return ResponseEntity.ok(response);
     }

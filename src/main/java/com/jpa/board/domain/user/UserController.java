@@ -1,6 +1,7 @@
 package com.jpa.board.domain.user;
 
 import com.jpa.board.dtos.UserDto.*;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createPost(@RequestBody UserRequest request) {
+    public ResponseEntity<UserResponse> createPost(@Valid @RequestBody UserRequest request) {
         UserResponse response = userService.createUser(request);
         URI location = URI.create("/users/" + response.getUserId());
         return ResponseEntity.created(location)
