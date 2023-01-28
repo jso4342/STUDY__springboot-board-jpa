@@ -14,8 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "posts")
 @SequenceGenerator(
         name = "post_seq_generator",
-        sequenceName = "post_seq",
-        initialValue = 1, allocationSize = 50)
+        sequenceName = "post_seq")
 public class Post extends BaseEntity {
 
     @Id
