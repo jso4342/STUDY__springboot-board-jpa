@@ -15,9 +15,5 @@ public class UserDto {
         public static UserResponse from(User user) {
             return new UserResponse(user.getId(), user.getName(), user.getHobby(), user.getAge());
         }
-
-        public long getUserId() {
-            return userId;
-        }
     }
 }

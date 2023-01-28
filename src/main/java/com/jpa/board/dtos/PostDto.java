@@ -16,10 +16,6 @@ public class PostDto {
         public static PostResponse from(Post post) {
             return new PostResponse(post.getId(), post.getTitle(), post.getContent());
         }
-
-        public long getPostId() {
-            return postId;
-        }
     }
 
     public record ModifyRequest(@NotBlank String title, @NotBlank String content) { }
