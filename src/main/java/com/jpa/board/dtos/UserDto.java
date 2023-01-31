@@ -11,7 +11,7 @@ public class UserDto {
         }
     }
 
-    public record UserResponse(@NotNull Long userId, @NotBlank String name, String hobby, int age) {
+    public record UserResponse(Long userId, String name, String hobby, int age) {
         public static UserResponse from(User user) {
             return new UserResponse(user.getId(), user.getName(), user.getHobby(), user.getAge());
         }

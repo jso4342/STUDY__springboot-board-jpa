@@ -12,7 +12,7 @@ public class PostDto {
         }
     }
 
-    public record PostResponse(@NotNull Long postId, @NotBlank String title, @NotBlank String content) {
+    public record PostResponse(Long postId, String title, String content) {
         public static PostResponse from(Post post) {
             return new PostResponse(post.getId(), post.getTitle(), post.getContent());
         }
