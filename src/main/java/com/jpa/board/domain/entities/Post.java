@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import org.springframework.util.Assert;
 
 @Entity
 @Table(name = "posts")
@@ -36,6 +37,9 @@ public class Post extends BaseEntity {
     protected Post()  { }
 
     public Post(Long id, String title, String content, User user) {
+        validateTitle(title);
+        validateContent(content);
+
         this.id = id;
         this.title = title;
         this.content = content;
@@ -69,5 +73,13 @@ public class Post extends BaseEntity {
     public void updatePost(String title, String content){
         this.title = title;
         this.content = content;
+    }
+
+    public void validateTitle(String title){
+        Assert.hasText(title, "제목은 적어도 한 글자 이상이어야 합니다.");
+    }
+
+    public void validateContent(String content){
+        Assert.hasText(content, "내용은 적어도 한 글자 이상이어야 합니다.");
     }
 }
