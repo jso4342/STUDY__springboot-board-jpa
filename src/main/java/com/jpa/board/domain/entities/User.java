@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.util.Assert;
 
 @Entity
 @Table(name = "users")
@@ -21,18 +24,22 @@ public class User extends BaseEntity {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String name;
 
-    @Column(length = 20)
+    @Column(nullable = false)
+    @ColumnDefault("'없음'")
     private String hobby;
 
     @Column(nullable = false, length = 3)
-    private int age;
+    private Integer age;
 
     protected User(){ }
 
     public User(Long id, String name, String hobby, int age) {
+        validateName(name);
+        validateAge(age);
+
         this.id = id;
         this.name = name;
         this.hobby = hobby;
@@ -61,5 +68,13 @@ public class User extends BaseEntity {
 
     public int getAge() {
         return age;
+    }
+
+    private void validateName(String name) {
+        Assert.hasText(name, "이름은 적어도 한 글자 이상이어야 합니다.");
+    }
+
+    private void validateAge(int age) {
+        Assert.isTrue(age > 0, "나이는 적어도 1살 이상이어야 합니다.");
     }
 }
