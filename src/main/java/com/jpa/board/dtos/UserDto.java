@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class UserDto {
     public record UserRequest(
-            @NotBlank
+            @NotBlank(message = "Name cannot be blank")
             String name,
             String hobby,
             int age

@@ -7,11 +7,11 @@ import jakarta.validation.constraints.NotNull;
 
 public class PostDto {
     public record PostRequest(
-            @NotNull
+            @NotNull(message = "User ID cannot be null")
             long userId,
-            @NotBlank
+            @NotBlank(message = "Title cannot be blank")
             String title,
-            @NotBlank
+            @NotBlank(message = "Content cannot be blank")
             String content
     ) {
         public Post toEntity(User user) {
@@ -30,9 +30,9 @@ public class PostDto {
     }
 
     public record ModifyRequest(
-            @NotBlank
+            @NotBlank(message = "Title cannot be blank")
             String title,
-            @NotBlank
+            @NotBlank(message = "Content cannot be blank")
             String content
     ) { }
 }
