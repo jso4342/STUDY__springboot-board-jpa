@@ -44,6 +44,7 @@ public class Post extends BaseEntity {
         this.title = title;
         this.content = content;
         this.user = user;
+        this.createdBy(user.getName());
     }
 
     public Post(String title, String content, User user) {

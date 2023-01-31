@@ -17,14 +17,10 @@ public abstract class BaseEntity {
     private LocalDateTime createdAt;
 
     @Column(name = "created_by", updatable = false)
-    @CreatedBy
+    //@CreatedBy
     private String createdBy;
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
+    public void createdBy(String author){
+        this.createdBy = author;
     }
 }
