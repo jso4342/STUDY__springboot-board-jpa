@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
-    public record UserRequest(Long userId, @NotBlank String name, String hobby, int age) {
+    public record UserRequest(@NotBlank String name, String hobby, int age) {
         public User toEntity() {
             return new User(name, hobby, age);
         }
