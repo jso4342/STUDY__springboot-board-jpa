@@ -2,7 +2,6 @@ package com.jpa.board.dtos;
 
 import com.jpa.board.domain.entities.User;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
     public record UserRequest(@NotBlank String name, String hobby, int age) {
