@@ -34,6 +34,9 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "created_by", updatable = false)
+    private String createdBy;
+
     protected Post()  { }
 
     public Post(Long id, String title, String content, User user) {
@@ -69,6 +72,10 @@ public class Post extends BaseEntity {
 
     public User getUser() {
         return user;
+    }
+
+    public void createdBy(String author){
+        this.createdBy = author;
     }
 
     public void updatePost(String title, String content){

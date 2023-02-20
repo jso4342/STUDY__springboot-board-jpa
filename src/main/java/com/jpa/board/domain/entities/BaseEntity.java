@@ -14,12 +14,4 @@ public abstract class BaseEntity {
     @Column(name = "created_at", updatable = false)
     @CreatedDate
     private LocalDateTime createdAt;
-
-    @Column(name = "created_by", updatable = false)
-    //@CreatedBy
-    private String createdBy;
-
-    public void createdBy(String author){
-        this.createdBy = author;
-    }
 }
